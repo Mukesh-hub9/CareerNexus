@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+.npm/
+
+# Logs & temp
+*.log
+npm-debug.log*
+.tempmediaStorage/
+.system_generated/
+scratch/
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment & local deployment
+.env
+.env.local
+.vercel
+.netlify
+.firebase/

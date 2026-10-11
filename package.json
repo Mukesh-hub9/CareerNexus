@@ -1,0 +1,12 @@
+{
+  "name": "careernexus",
+  "version": "1.0.0",
+  "description": "CareerNexus - AI Career Planning Platform",
+  "scripts": {
+    "dev": "npx -y live-server --port=5173 --open=index.html",
+    "start": "npx -y live-server --port=5173 --open=index.html",
+    "serve": "npx -y serve -l 5173",
+    "deploy:vercel": "npx -y vercel --prod",
+    "deploy:netlify": "npx -y netlify-cli deploy --prod --dir=."
+  }
+}

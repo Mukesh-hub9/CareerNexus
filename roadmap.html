@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Roadmap — CareerNexus </title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+
+<body>
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon" style="background:none;padding:0;overflow:visible;width:36px;height:36px;flex-shrink:0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" fill="none">
+          <defs>
+            <linearGradient id="lg-cn" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="url(#lg-cn)" opacity="0.18" />
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="none" stroke="url(#lg-cn)" stroke-width="1.6" />
+          <circle cx="22" cy="2" r="2.2" fill="#6366f1" />
+          <circle cx="38" cy="11" r="2.2" fill="#3b82f6" />
+          <circle cx="38" cy="33" r="2.2" fill="#06b6d4" />
+          <circle cx="22" cy="42" r="2.2" fill="#22d3ee" />
+          <circle cx="6" cy="33" r="2.2" fill="#818cf8" />
+          <circle cx="6" cy="11" r="2.2" fill="#6366f1" />
+          <line x1="22" y1="2" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="11" x2="22" y2="22" stroke="#3b82f6" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="11" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="33" x2="22" y2="22" stroke="#06b6d4" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="33" x2="22" y2="22" stroke="#818cf8" stroke-width="0.9" opacity="0.5" />
+          <line x1="22" y1="42" x2="22" y2="22" stroke="#22d3ee" stroke-width="0.9" opacity="0.5" />
+          <path d="M22 30 L22 15 M16 21 L22 15 L28 21" stroke="url(#lg-cn)" stroke-width="2.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <circle cx="22" cy="22" r="3" fill="url(#lg-cn)" />
+        </svg></div>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:1rem">CareerNexus</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-nav-item">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="career-dna.html" class="sidebar-nav-item">
+        <span class="nav-icon">🧬</span> Career DNA
+        <span class="nav-badge">New</span>
+      </a>
+      <a href="careers.html" class="sidebar-nav-item">
+        <span class="nav-icon">🎯</span> Career Explorer
+      </a>
+      <a href="assessment.html" class="sidebar-nav-item">
+        <span class="nav-icon">🧠</span> Skill Assessment
+      </a>
+      <a href="roadmap.html" class="sidebar-nav-item active">
+        <span class="nav-icon">🗺️</span> Roadmap
+      </a>
+      <div class="sidebar-section-label">Tools</div>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Portfolio coming soon!','info');return false">
+        <span class="nav-icon">💼</span> Portfolio
+      </a>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Resume Analyzer coming soon!','info');return false">
+        <span class="nav-icon">📄</span> Resume Analyzer
+      </a>
+      <a href="#" class="sidebar-nav-item"
+        onclick="document.getElementById('chatbot-fab') ? document.getElementById('chatbot-fab').click() : App.showToast('AI Assistant ready!','info');return false">
+        <span class="nav-icon">🤖</span> AI Assistant
+      </a>
+      <a href="trends.html" class="sidebar-nav-item">
+        <span class="nav-icon">📈</span> Industry Trends
+      </a>
+      <a href="#" class="sidebar-nav-item" onclick="App.logout();return false;">
+        <span class="nav-icon">🚪</span> Sign Out
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="user-avatar user-avatar-initials">S</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:600" class="user-name-display">Student</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="top-bar">
+    <div>
+      <div style="font-size:0.85rem;font-weight:600">Learning Roadmap</div>
+      <div style="font-size:0.7rem;color:var(--text-muted)" class="date-display"></div>
+    </div>
+    <div class="user-avatar user-avatar-initials" style="width:36px;height:36px;font-size:0.9rem">S</div>
+  </div>
+
+  <main class="main-content">
+
+    <div style="margin-bottom:var(--space-2xl)">
+      <div class="badge badge-green" style="margin-bottom:12px">🗺️ Personalized Roadmap</div>
+      <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:8px">Your Learning Journey</h1>
+      <p style="color:var(--text-secondary)">AI-generated phase-based roadmap tailored to your current skills and career
+        goal.</p>
+    </div>
+
+    <div class="roadmap-layout">
+
+      <!-- ─── Left: Timeline ─── -->
+      <div>
+        <!-- Career Goal & Progress -->
+        <div class="card reveal"
+          style="margin-bottom:var(--space-xl);background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.06))">
+          <div style="display:flex;align-items:center;gap:var(--space-lg);flex-wrap:wrap">
+            <div style="flex:1;min-width:240px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;gap:12px;flex-wrap:wrap">
+                <div
+                  style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em">
+                  🎯 Target Career</div>
+                <select id="roadmap-career-select" class="form-select" style="width:auto;padding:4px 30px 4px 10px;font-size:0.78rem;height:auto">
+                </select>
+              </div>
+              <div style="font-size:1.3rem;font-weight:800" id="roadmap-career-title">Cybersecurity Analyst</div>
+              <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px" id="roadmap-career-industry">
+                Information Security</div>
+            </div>
+            <div style="text-align:center">
+              <div
+                style="font-size:2.5rem;font-weight:900;font-family:var(--font-display);color:var(--accent-blue-light)"
+                id="roadmap-progress-pct">0%</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Complete</div>
+            </div>
+          </div>
+          <div class="progress-bar" style="margin-top:var(--space-lg);height:10px;border-radius:var(--radius-full)">
+            <div class="progress-fill" id="roadmap-progress-bar" data-width="0"
+              style="height:10px;border-radius:var(--radius-full)"></div>
+          </div>
+          <div
+            style="display:flex;justify-content:space-between;margin-top:8px;font-size:0.75rem;color:var(--text-muted)">
+            <span id="roadmap-done-tasks">0 tasks done</span>
+            <span id="roadmap-total-tasks">0 total tasks</span>
+          </div>
+        </div>
+
+        <!-- Phase Timeline -->
+        <div class="timeline" id="roadmap-timeline">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+
+      <!-- ─── Right: Digital Twin + Quick Stats ─── -->
+      <div>
+        <!-- Digital Twin Card -->
+        <div class="digital-twin-card reveal" style="margin-bottom:var(--space-xl)">
+          <div style="display:flex;align-items:center;gap:var(--space-sm);margin-bottom:var(--space-lg)">
+            <span style="font-size:1.5rem">🧬</span>
+            <div>
+              <div style="font-weight:700">AI Career Digital Twin</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Your predicted growth trajectory</div>
+            </div>
+          </div>
+
+          <!-- Current profile snapshot -->
+          <div id="twin-skills" style="margin-bottom:var(--space-lg)">
+            <!-- Filled by JS -->
+          </div>
+
+          <!-- Future predictions -->
+          <div style="margin-top:var(--space-md)">
+            <div
+              style="font-size:0.8rem;font-weight:600;color:var(--text-muted);margin-bottom:var(--space-sm);text-transform:uppercase;letter-spacing:0.08em">
+              📅 Future Predictions</div>
+            <div id="twin-predictions">
+              <!-- Filled by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Legends -->
+        <div class="card reveal" style="padding:var(--space-md)">
+          <div style="font-size:0.85rem;font-weight:600;margin-bottom:var(--space-md)">Legend</div>
+          <div style="display:flex;flex-direction:column;gap:8px;font-size:0.82rem">
+            <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--accent-green)">●</span>
+              Completed</div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--accent-blue)">●</span> In
+              Progress</div>
+            <div style="display:flex;align-items:center;gap:8px"><span style="color:var(--text-muted)">●</span> Locked
+            </div>
+          </div>
+          <div style="margin-top:var(--space-md);padding-top:var(--space-md);border-top:1px solid var(--border-subtle)">
+            <div style="font-size:0.82rem;color:var(--text-muted)">💡 Click any task to toggle its completion status
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script>
+    let roadmapData = null;
+    let careerResult = null;
+    const taskStateKey = 'careernexus_tasks';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!App.requireAuth()) return;
+      const state = App.getState();
+      const profile = state.profile || {};
+      const recs = AIEngine.getRecommendations(profile);
+      careerResult = recs[0] || { career: AIEngine.CAREERS_DB[0] };
+
+      const params = new URLSearchParams(window.location.search);
+      const queryId = params.get('career') || localStorage.getItem('careernexus_target_career');
+      if (queryId) {
+        const found = recs.find(r => r.career.id === queryId);
+        if (found) careerResult = found;
+      }
+
+      const selectEl = document.getElementById('roadmap-career-select');
+      if (selectEl) {
+        selectEl.innerHTML = recs.map(r => `
+          <option value="${r.career.id}" ${r.career.id === careerResult.career.id ? 'selected' : ''}>
+            ${r.career.emoji} ${r.career.name}
+          </option>
+        `).join('');
+        selectEl.addEventListener('change', (e) => {
+          const chosen = recs.find(r => r.career.id === e.target.value);
+          if (chosen) {
+            careerResult = chosen;
+            localStorage.setItem('careernexus_target_career', chosen.career.id);
+            loadRoadmapForCareer(chosen.career, profile);
+            App.showToast(`Loaded ${chosen.career.name} roadmap!`, 'info');
+          }
+        });
+      }
+
+      loadRoadmapForCareer(careerResult.career, profile);
+    });
+
+    function loadRoadmapForCareer(career, profile) {
+      document.getElementById('roadmap-career-title').textContent = career.emoji + ' ' + career.name;
+      document.getElementById('roadmap-career-industry').textContent = career.industry;
+
+      roadmapData = AIEngine.generateRoadmap(career, profile.skills || {});
+
+      // Restore task states from localStorage
+      const savedTasks = JSON.parse(localStorage.getItem(taskStateKey) || '{}');
+      roadmapData.roadmap.forEach(phase => {
+        phase.tasks.forEach(task => {
+          if (savedTasks[task.id]) task.status = savedTasks[task.id];
+        });
+      });
+
+      renderTimeline();
+      renderDigitalTwin(profile, career, profile.weeklyHours || 10);
+    }
+
+    function renderTimeline() {
+      const allTasks = roadmapData.roadmap.flatMap(p => p.tasks);
+      const done = allTasks.filter(t => t.status === 'done').length;
+      const pct = Math.round((done / allTasks.length) * 100);
+
+      document.getElementById('roadmap-progress-bar').dataset.width = pct;
+      document.getElementById('roadmap-progress-pct').textContent = pct + '%';
+      document.getElementById('roadmap-done-tasks').textContent = done + ' tasks done';
+      document.getElementById('roadmap-total-tasks').textContent = allTasks.length + ' total tasks';
+
+      const timelineEl = document.getElementById('roadmap-timeline');
+      const phaseColors = ['var(--accent-blue)', 'var(--accent-violet)', 'var(--accent-cyan)', 'var(--accent-green)'];
+
+      timelineEl.innerHTML = roadmapData.roadmap.map((phase, pi) => `
+    <div class="timeline-item reveal">
+      <div class="timeline-dot ${phase.tasks.every(t => t.status === 'done') ? 'done' : phase.tasks.some(t => t.status === 'inprogress') ? 'active' : 'locked'}"></div>
+      <div class="timeline-content">
+        <div class="phase-header">
+          <div class="phase-number" style="background:${phaseColors[pi]}">${pi + 1}</div>
+          <div class="phase-title">Phase ${pi + 1}: ${phase.phase}</div>
+          <div class="phase-duration">⏱ ${phase.duration}</div>
+        </div>
+        <div style="margin-bottom:var(--space-sm)">
+          ${phase.tasks.map(task => `
+            <div class="task-item ${task.status}" id="${task.id}" onclick="toggleTask('${task.id}', ${pi})">
+              <div class="task-checkbox">
+                ${task.status === 'done' ? '✓' : task.status === 'inprogress' ? '▶' : '🔒'}
+              </div>
+              <span class="task-name">${task.name}</span>
+              ${task.status === 'done' ? '<span class="badge badge-green" style="font-size:0.7rem">Done</span>' : ''}
+              ${task.status === 'inprogress' ? '<span class="badge badge-blue" style="font-size:0.7rem">Active</span>' : ''}
+            </div>
+          `).join('')}
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+          <span style="font-size:0.78rem;color:var(--text-muted)">
+            ${phase.tasks.filter(t => t.status === 'done').length}/${phase.tasks.length} completed
+          </span>
+          <div class="progress-bar progress-thin" style="width:120px">
+            <div class="progress-fill" style="width:${Math.round(phase.tasks.filter(t => t.status === 'done').length / phase.tasks.length * 100)}%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+    }
+
+    function toggleTask(taskId, phaseIdx) {
+      const task = roadmapData.roadmap[phaseIdx].tasks.find(t => t.id === taskId);
+      if (!task || task.status === 'locked') { App.showToast('Complete previous tasks first!', 'warning'); return; }
+      task.status = task.status === 'done' ? 'inprogress' : 'done';
+
+      // Save
+      const saved = JSON.parse(localStorage.getItem(taskStateKey) || '{}');
+      saved[taskId] = task.status;
+      localStorage.setItem(taskStateKey, JSON.stringify(saved));
+
+      renderTimeline();
+      App.showToast(task.status === 'done' ? '✅ Task completed!' : '🔄 Marked as in progress', 'success');
+    }
+
+    function renderDigitalTwin(profile, career, weeklyHours) {
+      const skills = profile.skills || {};
+      const topSkills = Object.entries(skills).slice(0, 4);
+
+      document.getElementById('twin-skills').innerHTML = `
+    <div style="font-size:0.8rem;font-weight:600;color:var(--text-muted);margin-bottom:10px;text-transform:uppercase;letter-spacing:0.08em">Current Profile</div>
+    ${topSkills.map(([name, pct]) => `
+      <div style="margin-bottom:8px">
+        <div style="display:flex;justify-content:space-between;font-size:0.8rem;margin-bottom:4px">
+          <span>${name}</span>
+          <span style="color:${AIEngine.getSkillColor(pct)}">${pct}%</span>
+        </div>
+        <div class="progress-bar progress-thin">
+          <div class="progress-fill" style="width:${pct}%;background:${AIEngine.getSkillColor(pct)}"></div>
+        </div>
+      </div>
+    `).join('')}
+  `;
+
+      const months = weeklyHours >= 20 ? 3 : weeklyHours >= 10 ? 5 : 7;
+      document.getElementById('twin-predictions').innerHTML = `
+    <div class="future-prediction">
+      <span class="prediction-time">3 Months</span>
+      <span class="prediction-text">🎯 Internship Ready</span>
+    </div>
+    <div class="future-prediction">
+      <span class="prediction-time">${Math.ceil(months / 2)} Months</span>
+      <span class="prediction-text">🏆 Junior Level Ready</span>
+    </div>
+    <div class="future-prediction">
+      <span class="prediction-time">${months} Months</span>
+      <span class="prediction-text">🚀 Entry-Level Career</span>
+    </div>
+    <div class="future-prediction">
+      <span class="prediction-time">${months + 6} Months</span>
+      <span class="prediction-text">⭐ Advanced Career Path</span>
+    </div>
+    <div style="margin-top:12px;padding:10px;background:rgba(59,130,246,0.06);border-radius:8px;font-size:0.78rem;color:var(--text-muted)">
+      ⏱ Based on ${weeklyHours}+ hours/week dedication
+    </div>
+  `;
+    }
+  </script>
+
+</body>
+
+</html>

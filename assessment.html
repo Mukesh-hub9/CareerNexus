@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skill Assessment — CareerNexus </title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+
+<body>
+
+  <!-- Sidebar (same as dashboard) -->
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon" style="background:none;padding:0;overflow:visible;width:36px;height:36px;flex-shrink:0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" fill="none">
+          <defs>
+            <linearGradient id="lg-cn" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="url(#lg-cn)" opacity="0.18" />
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="none" stroke="url(#lg-cn)" stroke-width="1.6" />
+          <circle cx="22" cy="2" r="2.2" fill="#6366f1" />
+          <circle cx="38" cy="11" r="2.2" fill="#3b82f6" />
+          <circle cx="38" cy="33" r="2.2" fill="#06b6d4" />
+          <circle cx="22" cy="42" r="2.2" fill="#22d3ee" />
+          <circle cx="6" cy="33" r="2.2" fill="#818cf8" />
+          <circle cx="6" cy="11" r="2.2" fill="#6366f1" />
+          <line x1="22" y1="2" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="11" x2="22" y2="22" stroke="#3b82f6" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="11" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="33" x2="22" y2="22" stroke="#06b6d4" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="33" x2="22" y2="22" stroke="#818cf8" stroke-width="0.9" opacity="0.5" />
+          <line x1="22" y1="42" x2="22" y2="22" stroke="#22d3ee" stroke-width="0.9" opacity="0.5" />
+          <path d="M22 30 L22 15 M16 21 L22 15 L28 21" stroke="url(#lg-cn)" stroke-width="2.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <circle cx="22" cy="22" r="3" fill="url(#lg-cn)" />
+        </svg></div>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:1rem">CareerNexus</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-nav-item">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="career-dna.html" class="sidebar-nav-item">
+        <span class="nav-icon">🧬</span> Career DNA
+        <span class="nav-badge">New</span>
+      </a>
+      <a href="careers.html" class="sidebar-nav-item">
+        <span class="nav-icon">🎯</span> Career Explorer
+      </a>
+      <a href="assessment.html" class="sidebar-nav-item active">
+        <span class="nav-icon">🧠</span> Skill Assessment
+      </a>
+      <a href="roadmap.html" class="sidebar-nav-item">
+        <span class="nav-icon">🗺️</span> Roadmap
+      </a>
+      <div class="sidebar-section-label">Tools</div>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Portfolio coming soon!','info');return false">
+        <span class="nav-icon">💼</span> Portfolio
+      </a>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Resume Analyzer coming soon!','info');return false">
+        <span class="nav-icon">📄</span> Resume Analyzer
+      </a>
+      <a href="#" class="sidebar-nav-item"
+        onclick="document.getElementById('chatbot-fab') ? document.getElementById('chatbot-fab').click() : App.showToast('AI Assistant ready!','info');return false">
+        <span class="nav-icon">🤖</span> AI Assistant
+      </a>
+      <a href="trends.html" class="sidebar-nav-item">
+        <span class="nav-icon">📈</span> Industry Trends
+      </a>
+      <div class="sidebar-section-label">Account</div>
+      <a href="#" class="sidebar-nav-item" onclick="App.logout();return false;">
+        <span class="nav-icon">🚪</span> Sign Out
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="user-avatar user-avatar-initials">S</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:600" class="user-name-display">Student</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="top-bar">
+    <div>
+      <div style="font-size:0.85rem;font-weight:600">Skill Assessment</div>
+      <div style="font-size:0.7rem;color:var(--text-muted)" class="date-display"></div>
+    </div>
+    <div class="user-avatar user-avatar-initials" style="width:36px;height:36px;font-size:0.9rem">S</div>
+  </div>
+
+  <main class="main-content">
+
+    <!-- ─── Category Selection ─── -->
+    <div id="category-section">
+      <div style="margin-bottom:var(--space-2xl)">
+        <div class="badge badge-violet" style="margin-bottom:12px">🧠 Skill Assessment</div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:8px">Assess Your Skills</h1>
+        <p style="color:var(--text-secondary)">Choose a category to begin. The AI will analyze your answers and update
+          your skill profile.</p>
+      </div>
+
+      <div class="assessment-categories" id="assessment-categories">
+        <!-- Filled by JS -->
+      </div>
+
+      <!-- Self-Assessment Star Rating -->
+      <div class="card reveal" style="margin-top:var(--space-xl)">
+        <h2 style="font-size:1rem;font-weight:700;margin-bottom:var(--space-lg)">⭐ Quick Self-Assessment</h2>
+        <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:var(--space-lg)">
+          Rate your current skill level. This gives the AI an initial baseline for your profile.
+        </p>
+        <div id="self-assessment-grid">
+          <!-- Filled by JS -->
+        </div>
+        <button class="btn btn-primary" style="margin-top:var(--space-lg)" onclick="saveSelfAssessment()">Save
+          Self-Assessment</button>
+      </div>
+    </div>
+
+    <!-- ─── Question Section ─── -->
+    <div id="question-section" class="hidden">
+      <div class="assessment-header">
+        <div>
+          <div class="badge badge-blue" id="q-category">Category</div>
+          <h2 style="font-size:1.2rem;font-weight:700;margin-top:8px" id="q-number">Question 1 of 5</h2>
+        </div>
+        <div style="display:flex;align-items:center;gap:var(--space-md)">
+          <span class="badge badge-orange" id="q-difficulty">Intermediate</span>
+          <span class="badge badge-violet" id="q-type-badge">MCQ</span>
+          <!-- Timer -->
+          <div class="timer-ring">
+            <svg width="60" height="60">
+              <circle cx="30" cy="30" r="24" fill="none" stroke="rgba(59,130,246,0.1)" stroke-width="4" />
+              <circle cx="30" cy="30" r="24" fill="none" stroke="var(--accent-blue)" stroke-width="4"
+                stroke-dasharray="150.8" stroke-dashoffset="0" stroke-linecap="round"
+                style="transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s linear" />
+            </svg>
+            <span class="timer-text" id="timer-value">5:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-bar" style="margin-bottom:var(--space-xl)">
+        <div class="progress-fill" id="q-progress" style="width:20%"></div>
+      </div>
+
+      <!-- Question Card -->
+      <div class="question-card">
+        <p class="question-text" id="q-text">Loading question...</p>
+        <div class="options-grid" id="q-options"></div>
+      </div>
+
+      <!-- Navigation -->
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-xl)">
+        <button class="btn btn-secondary" id="prev-btn" onclick="Assessment.prevQuestion()">← Previous</button>
+        <button class="btn btn-primary" id="next-btn" onclick="Assessment.nextQuestion()">
+          <span>Next →</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ─── Results Section ─── -->
+    <div id="results-section" class="hidden">
+      <div class="assessment-result-card">
+        <div style="font-size:4rem;margin-bottom:var(--space-md)">🎉</div>
+        <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:8px">Assessment Complete!</h1>
+        <p style="color:var(--text-secondary);margin-bottom:var(--space-2xl)">Your skill scores have been updated. The
+          AI will now refine your career recommendations.</p>
+
+        <div
+          style="display:flex;align-items:center;justify-content:center;gap:var(--space-2xl);margin-bottom:var(--space-2xl);flex-wrap:wrap">
+          <div>
+            <div style="font-size:3.5rem;font-weight:900;font-family:var(--font-display)" class="text-gradient"
+              id="result-score">0%</div>
+            <div style="font-size:0.85rem;color:var(--text-muted)">Average Score</div>
+          </div>
+          <div>
+            <div style="font-size:1.4rem;font-weight:700" id="result-level">Intermediate</div>
+            <div style="font-size:0.85rem;color:var(--text-muted)">Skill Level</div>
+          </div>
+        </div>
+
+        <div style="max-width:500px;margin:0 auto var(--space-2xl)" id="results-skills"></div>
+
+        <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap">
+          <a href="careers.html" class="btn btn-primary">🎯 View Career Matches</a>
+          <button class="btn btn-secondary" onclick="resetAssessment()">Take Another Assessment</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script src="js/assessment.js"></script>
+  <script>
+    const SELF_SKILLS = [
+      { name: 'Python', icon: '🐍' }, { name: 'JavaScript', icon: '⚡' },
+      { name: 'Networking', icon: '🌐' }, { name: 'Linux', icon: '🐧' },
+      { name: 'Communication', icon: '💬' }, { name: 'Problem Solving', icon: '🧩' },
+      { name: 'Leadership', icon: '👑' }, { name: 'SQL', icon: '🗄️' }
+    ];
+
+    const selfRatings = {};
+
+    document.addEventListener('DOMContentLoaded', () => {
+      Assessment.initPage();
+
+      // Render self-assessment
+      const grid = document.getElementById('self-assessment-grid');
+      if (grid) {
+        grid.innerHTML = SELF_SKILLS.map(s => `
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:12px var(--space-md);
+                  background:var(--bg-input);border-radius:var(--radius-md);margin-bottom:8px;border:1px solid var(--border-subtle)">
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="font-size:1.2rem">${s.icon}</span>
+          <span style="font-weight:600;font-size:0.9rem">${s.name}</span>
+        </div>
+        <div class="star-rating" data-skill="${s.name}">
+          ${[1, 2, 3, 4, 5].map(i => `<span class="star" data-val="${i}" onclick="rateSelf('${s.name}',${i},this)">⭐</span>`).join('')}
+        </div>
+      </div>
+    `).join('');
+      }
+    });
+
+    function rateSelf(skill, val, el) {
+      selfRatings[skill] = val * 20;
+      const stars = el.closest('.star-rating').querySelectorAll('.star');
+      stars.forEach((s, i) => { s.classList.toggle('filled', i < val); });
+    }
+
+    function saveSelfAssessment() {
+      if (Object.keys(selfRatings).length === 0) {
+        App.showToast('Please rate at least one skill.', 'warning'); return;
+      }
+      const state = App.getState();
+      const currentSkills = (state && state.profile && state.profile.skills) ? state.profile.skills : {};
+      App.saveState({ profile: { skills: { ...currentSkills, ...selfRatings } } });
+      App.showToast('Self-assessment saved! ✅', 'success');
+    }
+
+    function resetAssessment() {
+      document.getElementById('results-section').classList.add('hidden');
+      document.getElementById('category-section').classList.remove('hidden');
+    }
+  </script>
+
+</body>
+
+</html>

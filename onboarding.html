@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personalized Onboarding — CareerNexus AI</title>
+  <meta name="description"
+    content="Set up your education, interests, skills, and goals to generate your personalized AI Career DNA profile." />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+
+<body class="onboarding-page-bg">
+
+  <!-- ═══ ONBOARDING TOP NAVIGATION ═══ -->
+  <header class="onboarding-nav">
+    <div style="display:flex;align-items:center;gap:12px">
+      <a href="index.html" class="auth-brand-logo" title="Back to Home">
+        <div class="logo-icon" style="background:none;padding:0;overflow:visible;width:34px;height:34px;flex-shrink:0">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="34" height="34" fill="none">
+            <defs>
+              <linearGradient id="lg-ob" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#06b6d4" />
+              </linearGradient>
+            </defs>
+            <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="url(#lg-ob)" opacity="0.18" />
+            <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="none" stroke="url(#lg-ob)" stroke-width="1.6" />
+            <circle cx="22" cy="2" r="2.2" fill="#6366f1" />
+            <circle cx="38" cy="11" r="2.2" fill="#3b82f6" />
+            <circle cx="38" cy="33" r="2.2" fill="#06b6d4" />
+            <circle cx="22" cy="42" r="2.2" fill="#22d3ee" />
+            <circle cx="6" cy="33" r="2.2" fill="#818cf8" />
+            <circle cx="6" cy="11" r="2.2" fill="#6366f1" />
+            <path d="M22 30 L22 15 M16 21 L22 15 L28 21" stroke="url(#lg-ob)" stroke-width="2.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <circle cx="22" cy="22" r="3" fill="url(#lg-ob)" />
+          </svg>
+        </div>
+        <span style="font-family:var(--font-display);font-weight:800;font-size:1.15rem;color:var(--text-primary)">
+          Career<span class="text-gradient">Nexus</span>
+        </span>
+      </a>
+      <span class="badge badge-blue hide-mobile" style="font-size:0.7rem;padding:2px 8px">AI Setup Wizard</span>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:var(--space-md)">
+      <button type="button" class="btn btn-ghost btn-sm" id="btn-quick-fill-ob" style="font-size:0.8rem;border:1px dashed var(--border-medium);color:var(--accent-cyan-light)">
+        ⚡ Quick Fill Demo
+      </button>
+      <div style="font-size:0.85rem;color:var(--accent-blue-light);font-weight:700;display:flex;align-items:center;gap:6px" id="step-progress-text">
+        <span class="status-dot active"></span> Step 01 of 04
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ MAIN ONBOARDING CONTAINER ═══ -->
+  <main class="onboarding-main">
+    <div class="onboarding-card animate-fadeInUp">
+
+      <!-- Interactive Stepper Track -->
+      <div class="onboarding-stepper" id="ob-stepper">
+        <div class="onboarding-step-pill active" data-step="1">
+          <div class="step-circle">1</div>
+          <span>Education</span>
+        </div>
+        <div class="onboarding-step-pill" data-step="2">
+          <div class="step-circle">2</div>
+          <span>Interests</span>
+        </div>
+        <div class="onboarding-step-pill" data-step="3">
+          <div class="step-circle">3</div>
+          <span>Skills</span>
+        </div>
+        <div class="onboarding-step-pill" data-step="4">
+          <div class="step-circle">4</div>
+          <span>Goals</span>
+        </div>
+        <div class="onboarding-step-pill" data-step="5">
+          <div class="step-circle">✦</div>
+          <span>AI DNA</span>
+        </div>
+      </div>
+
+      <!-- Animated Progress Fill Bar -->
+      <div class="onboarding-progress-bar-track">
+        <div class="onboarding-progress-fill" id="ob-progress-fill" style="width:25%"></div>
+      </div>
+
+      <!-- ─── STEP 1: EDUCATION ─── -->
+      <div class="onboarding-step" id="ob-step-1">
+        <div class="onboarding-step-header">
+          <span class="onboarding-step-num">Step 01 / Academic Foundation</span>
+          <h1 class="onboarding-step-title">Tell us about your education.</h1>
+          <p class="onboarding-step-sub">CareerNexus AI uses your academic background to personalize career trajectories and prerequisites.</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ob-degree">Degree / Major <span style="color:var(--accent-cyan)">*</span></label>
+          <select id="ob-degree" class="form-select">
+            <option value="">Select your degree program...</option>
+            <option value="B.Tech / B.E. Computer Science" selected>B.Tech / B.E. Computer Science</option>
+            <option value="B.Tech Information Technology">B.Tech Information Technology</option>
+            <option value="B.Sc Computer Science / Data Science">B.Sc Computer Science / Data Science</option>
+            <option value="BCA Computer Applications">BCA Computer Applications</option>
+            <option value="M.Tech / M.E. CS/IT">M.Tech / M.E. CS/IT</option>
+            <option value="MCA Computer Applications">MCA Computer Applications</option>
+            <option value="Artificial Intelligence / Data Science Major">Artificial Intelligence / Data Science Major</option>
+            <option value="Electrical / Electronics Engineering">Electrical / Electronics Engineering</option>
+            <option value="Other STEM Degree">Other STEM Degree</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ob-specialization">Specialization / Minor (Optional)</label>
+          <input type="text" id="ob-specialization" class="form-input" placeholder="e.g. Cybersecurity, AI, Cloud Computing" />
+          <div class="suggestion-pills">
+            <span style="font-size:0.75rem;color:var(--text-muted);display:inline-flex;align-items:center">Suggested:</span>
+            <button type="button" class="sugg-pill" onclick="document.getElementById('ob-specialization').value='Cybersecurity & Systems'">Cybersecurity</button>
+            <button type="button" class="sugg-pill" onclick="document.getElementById('ob-specialization').value='Artificial Intelligence & ML'">AI & ML</button>
+            <button type="button" class="sugg-pill" onclick="document.getElementById('ob-specialization').value='Cloud & DevOps'">Cloud Computing</button>
+            <button type="button" class="sugg-pill" onclick="document.getElementById('ob-specialization').value='Full-Stack Software Dev'">Software Eng</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="ob-college">University / College Name <span style="color:var(--accent-cyan)">*</span></label>
+          <input type="text" id="ob-college" class="form-input" placeholder="e.g. Stanford University / Tech Institute" value="California Institute of Technology" required />
+        </div>
+
+        <div class="grid-2" style="gap:var(--space-md)">
+          <div class="form-group">
+            <label class="form-label" for="ob-grad-year">Graduation Year</label>
+            <select id="ob-grad-year" class="form-select">
+              <option value="2028">2028</option>
+              <option value="2027">2027</option>
+              <option value="2026" selected>2026</option>
+              <option value="2025">2025</option>
+              <option value="2024">2024</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="ob-academic-level">Current Academic Level</label>
+            <select id="ob-academic-level" class="form-select">
+              <option value="Freshman / 1st Year">Freshman / 1st Year</option>
+              <option value="Sophomore / 2nd Year">Sophomore / 2nd Year</option>
+              <option value="Junior / 3rd Year" selected>Junior / 3rd Year</option>
+              <option value="Senior / 4th Year">Senior / 4th Year</option>
+              <option value="Postgraduate / Master's">Postgraduate / Master's</option>
+              <option value="Recent Graduate">Recent Graduate</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;margin-top:var(--space-xl)">
+          <button type="button" class="btn btn-primary btn-lg" id="btn-step-1-next">
+            Continue to Interests →
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 2: INTERESTS ─── -->
+      <div class="onboarding-step" id="ob-step-2" style="display:none">
+        <div class="onboarding-step-header">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="onboarding-step-num">Step 02 / Passion & Domains</span>
+            <span class="badge badge-cyan" id="interest-count-badge">0 / 2 selected</span>
+          </div>
+          <h1 class="onboarding-step-title">What are you passionate about?</h1>
+          <p class="onboarding-step-sub">Select the technological domains that excite you the most (minimum 2).</p>
+        </div>
+
+        <div class="interests-grid" id="ob-interests-grid">
+          <div class="interest-card selected" data-interest="Cybersecurity">
+            <span class="interest-icon">🛡️</span>
+            <div>
+              <div class="interest-name">Cybersecurity</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Network defense, ethical hacking & threat intelligence</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+
+          <div class="interest-card selected" data-interest="AI / Machine Learning">
+            <span class="interest-icon">🤖</span>
+            <div>
+              <div class="interest-name">AI / Machine Learning</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Neural networks, deep learning & LLM applications</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+
+          <div class="interest-card" data-interest="Software Development">
+            <span class="interest-icon">💻</span>
+            <div>
+              <div class="interest-name">Software Engineering</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">High-scale distributed systems & robust applications</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+
+          <div class="interest-card" data-interest="Cloud Computing">
+            <span class="interest-icon">☁️</span>
+            <div>
+              <div class="interest-name">Cloud Architecture</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">AWS, Azure, Docker, Kubernetes & serverless infra</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+
+          <div class="interest-card" data-interest="Data Science">
+            <span class="interest-icon">📊</span>
+            <div>
+              <div class="interest-name">Data Science & Big Data</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Predictive modeling, data pipelines & statistics</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+
+          <div class="interest-card" data-interest="DevOps">
+            <span class="interest-icon">⚙️</span>
+            <div>
+              <div class="interest-name">DevOps & Site Reliability</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">CI/CD automation, IaC & platform observability</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+
+          <div class="interest-card" data-interest="UI/UX Design">
+            <span class="interest-icon">🎨</span>
+            <div>
+              <div class="interest-name">UI/UX Product Design</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Design systems, micro-interactions & user research</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+
+          <div class="interest-card" data-interest="Blockchain">
+            <span class="interest-icon">🔗</span>
+            <div>
+              <div class="interest-name">Web3 & Decentralized Systems</div>
+              <div style="font-size:0.75rem;color:var(--text-muted)">Smart contracts, cryptography & distributed ledgers</div>
+            </div>
+            <div class="interest-check">✓</div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-xl)">
+          <button type="button" class="btn btn-ghost" id="btn-step-2-back">← Back</button>
+          <button type="button" class="btn btn-primary btn-lg" id="btn-step-2-next">Continue to Skills →</button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 3: SKILLS ─── -->
+      <div class="onboarding-step" id="ob-step-3" style="display:none">
+        <div class="onboarding-step-header">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="onboarding-step-num">Step 03 / Competency Mapping</span>
+            <span class="badge badge-violet" id="skill-count-badge">4 skills selected</span>
+          </div>
+          <h1 class="onboarding-step-title">What are your current skills?</h1>
+          <p class="onboarding-step-sub">Select the technologies, tools, and languages you have hands-on experience with.</p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="category-tab-bar">
+          <button type="button" class="cat-tab-btn active" data-filter="all">All Skills</button>
+          <button type="button" class="cat-tab-btn" data-filter="prog">Programming</button>
+          <button type="button" class="cat-tab-btn" data-filter="cloud">Cloud & Systems</button>
+          <button type="button" class="cat-tab-btn" data-filter="sec">Security</button>
+          <button type="button" class="cat-tab-btn" data-filter="ai">AI & Data</button>
+        </div>
+
+        <!-- Skills Chips -->
+        <div class="skill-chips-wrap" id="ob-skills-wrap">
+          <div class="skill-tag-chip selected" data-cat="prog" data-skill="Python">🐍 Python</div>
+          <div class="skill-tag-chip" data-cat="prog" data-skill="Java">☕ Java</div>
+          <div class="skill-tag-chip selected" data-cat="prog" data-skill="JavaScript">⚡ JavaScript</div>
+          <div class="skill-tag-chip" data-cat="prog" data-skill="C++">⚙️ C++</div>
+          <div class="skill-tag-chip" data-cat="cloud" data-skill="SQL">🗄️ SQL</div>
+          <div class="skill-tag-chip selected" data-cat="cloud" data-skill="Linux">🐧 Linux</div>
+          <div class="skill-tag-chip selected" data-cat="sec" data-skill="Networking">🌐 Networking</div>
+          <div class="skill-tag-chip" data-cat="sec" data-skill="Cybersecurity">🛡️ Cybersecurity</div>
+          <div class="skill-tag-chip" data-cat="cloud" data-skill="AWS">☁️ AWS Cloud</div>
+          <div class="skill-tag-chip" data-cat="cloud" data-skill="Docker">🐳 Docker</div>
+          <div class="skill-tag-chip" data-cat="cloud" data-skill="Kubernetes">☸️ Kubernetes</div>
+          <div class="skill-tag-chip" data-cat="cloud" data-skill="Git">🐙 Git</div>
+          <div class="skill-tag-chip" data-cat="ai" data-skill="Machine Learning">🤖 Machine Learning</div>
+          <div class="skill-tag-chip" data-cat="ai" data-skill="Deep Learning">🧠 Deep Learning</div>
+          <div class="skill-tag-chip" data-cat="ai" data-skill="Data Analysis">📊 Data Analysis</div>
+          <div class="skill-tag-chip" data-cat="sec" data-skill="Ethical Hacking">🕵️ Ethical Hacking</div>
+        </div>
+
+        <div style="margin-bottom:var(--space-xl);padding:var(--space-md);background:rgba(255,255,255,0.03);border-radius:var(--radius-lg);border:1px solid var(--border-subtle)">
+          <label class="form-label" style="margin-bottom:8px">Self-Assessed Overall Technical Level</label>
+          <div style="display:flex;gap:var(--space-md)">
+            <button type="button" class="btn skill-prof-btn" data-prof="Beginner">🌱 Beginner (Basics & Concepts)</button>
+            <button type="button" class="btn skill-prof-btn active" data-prof="Intermediate">⚡ Intermediate (Built Projects)</button>
+            <button type="button" class="btn skill-prof-btn" data-prof="Advanced">🔥 Advanced (Production Ready)</button>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-xl)">
+          <button type="button" class="btn btn-ghost" id="btn-step-3-back">← Back</button>
+          <button type="button" class="btn btn-primary btn-lg" id="btn-step-3-next">Continue to Strategy →</button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 4: GOALS & TIME COMMITMENT ─── -->
+      <div class="onboarding-step" id="ob-step-4" style="display:none">
+        <div class="onboarding-step-header">
+          <span class="onboarding-step-num">Step 04 / Career Trajectory</span>
+          <h1 class="onboarding-step-title">Where do you want to go?</h1>
+          <p class="onboarding-step-sub">Define your strategic career objective so the AI can build your learning roadmap.</p>
+        </div>
+
+        <div class="form-group" style="margin-bottom:var(--space-xl)">
+          <label class="form-label">Strategic Career Goal</label>
+          <div style="display:flex;flex-direction:column;gap:var(--space-md)">
+            <div class="interest-card goal-card selected" data-goal="target">
+              <span class="interest-icon">🎯</span>
+              <div style="flex:1">
+                <div style="font-weight:700;color:var(--text-primary)">Target Career Acceleration</div>
+                <div style="font-size:0.82rem;color:var(--text-muted)">I have a specific target role in mind (e.g. Cybersecurity Analyst or AI Engineer) and want a focused roadmap.</div>
+              </div>
+              <div class="interest-check">✓</div>
+            </div>
+
+            <div class="interest-card goal-card" data-goal="explore">
+              <span class="interest-icon">🧭</span>
+              <div style="flex:1">
+                <div style="font-weight:700;color:var(--text-primary)">Multi-Domain Tech Exploration</div>
+                <div style="font-size:0.82rem;color:var(--text-muted)">I want to explore multiple high-growth domains, compare market salaries, and keep my career options open.</div>
+              </div>
+              <div class="interest-check">✓</div>
+            </div>
+
+            <div class="interest-card goal-card" data-goal="ai-recommend">
+              <span class="interest-icon">✦</span>
+              <div style="flex:1">
+                <div style="font-weight:700;color:var(--text-primary)">AI Career Discovery</div>
+                <div style="font-size:0.82rem;color:var(--text-muted)">Let CareerNexus AI analyze my skills, calculate my Career DNA archetype, and prescribe the best match.</div>
+              </div>
+              <div class="interest-check">✓</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Weekly Learning Commitment</label>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-md)" id="time-chips-group">
+            <button type="button" class="btn skill-prof-btn time-chip" data-time="2-5">2–5 hrs/wk<br><span style="font-size:0.7rem;color:var(--text-muted)">Light Pace</span></button>
+            <button type="button" class="btn skill-prof-btn time-chip active" data-time="5-10">5–10 hrs/wk<br><span style="font-size:0.7rem;color:var(--text-muted)">Steady Pace</span></button>
+            <button type="button" class="btn skill-prof-btn time-chip" data-time="10-20">10–20 hrs/wk<br><span style="font-size:0.7rem;color:var(--text-muted)">Accelerated</span></button>
+            <button type="button" class="btn skill-prof-btn time-chip" data-time="20+">20+ hrs/wk<br><span style="font-size:0.7rem;color:var(--text-muted)">Intensive</span></button>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:var(--space-2xl)">
+          <button type="button" class="btn btn-ghost" id="btn-step-4-back">← Back</button>
+          <button type="button" class="btn btn-primary btn-lg" id="btn-finish-onboarding">
+            Generate My Career Profile ✦
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── STEP 5: AI COMPUTATION & CELEBRATION ─── -->
+      <div class="onboarding-step" id="ob-step-5" style="display:none">
+        <div class="ai-processing-box">
+          <div class="ai-spin-logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="90" height="90" fill="none">
+              <defs>
+                <linearGradient id="lg-spin" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6366f1" />
+                  <stop offset="100%" stop-color="#06b6d4" />
+                </linearGradient>
+              </defs>
+              <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="url(#lg-spin)" opacity="0.25" />
+              <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="none" stroke="url(#lg-spin)" stroke-width="2" />
+              <circle cx="22" cy="22" r="6" fill="url(#lg-spin)" />
+            </svg>
+          </div>
+
+          <h2 style="font-size:1.75rem;font-weight:900;margin-bottom:8px" id="ai-process-heading">
+            Synthesizing Career DNA...
+          </h2>
+          <p style="font-size:0.95rem;color:var(--text-secondary);margin-bottom:var(--space-xl)" id="ai-process-sub">
+            CareerNexus neural engine is calculating multidimensional career vectors & personalized milestones.
+          </p>
+
+          <div class="ai-checklist">
+            <div class="ai-check-item" id="ai-chk-1">
+              <div class="ai-check-icon">✓</div>
+              <span>Vectorizing academic degree & technical foundation</span>
+            </div>
+            <div class="ai-check-item" id="ai-chk-2">
+              <div class="ai-check-icon">✓</div>
+              <span>Computing domain affinity & competency scores</span>
+            </div>
+            <div class="ai-check-item" id="ai-chk-3">
+              <div class="ai-check-icon">✓</div>
+              <span>Formulating 8-dimension Career DNA profile</span>
+            </div>
+            <div class="ai-check-item" id="ai-chk-4">
+              <div class="ai-check-icon">✓</div>
+              <span>Benchmarking real-time industry hiring trends</span>
+            </div>
+            <div class="ai-check-item" id="ai-chk-5">
+              <div class="ai-check-icon">✓</div>
+              <span>Constructing milestone learning roadmap</span>
+            </div>
+          </div>
+
+          <div style="margin-top:var(--space-2xl);display:none" id="ai-done-actions" class="animate-scaleIn">
+            <div style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-xl)">
+              <div style="font-size:2rem;margin-bottom:6px">🎉</div>
+              <h3 style="font-size:1.4rem;font-weight:800;color:var(--accent-green);margin-bottom:6px">
+                Career Intelligence Profile Built!
+              </h3>
+              <p style="font-size:0.9rem;color:var(--text-secondary);max-width:440px;margin:0 auto">
+                Your Career DNA is ready. We've matched your profile with high-growth roles and built your personalized roadmap.
+              </p>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg" id="btn-enter-dashboard" style="box-shadow:0 6px 25px rgba(99,102,241,0.5)">
+              🚀 Explore My Career Dashboard →
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script>
+    'use strict';
+
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentStep = 1;
+      const profileData = {
+        degree: 'B.Tech / B.E. Computer Science',
+        specialization: '',
+        college: 'California Institute of Technology',
+        graduationYear: '2026',
+        academicLevel: 'Junior / 3rd Year',
+        interests: ['Cybersecurity', 'AI / Machine Learning'],
+        skills: {
+          'Python': 70,
+          'JavaScript': 65,
+          'Linux': 70,
+          'Networking': 75
+        },
+        proficiency: 'Intermediate',
+        goal: 'target',
+        weeklyHours: '5-10'
+      };
+
+      // Update counters
+      function updateBadges() {
+        const intCount = document.querySelectorAll('#ob-interests-grid .interest-card.selected').length;
+        const intBadge = document.getElementById('interest-count-badge');
+        if (intBadge) {
+          intBadge.textContent = `${intCount} selected (min 2)`;
+          intBadge.className = intCount >= 2 ? 'badge badge-green' : 'badge badge-orange';
+        }
+
+        const skillCount = document.querySelectorAll('#ob-skills-wrap .skill-tag-chip.selected').length;
+        const skillBadge = document.getElementById('skill-count-badge');
+        if (skillBadge) {
+          skillBadge.textContent = `${skillCount} skills selected`;
+        }
+      }
+
+      // Step switching
+      function goToStep(step) {
+        currentStep = step;
+        for (let i = 1; i <= 5; i++) {
+          const el = document.getElementById(`ob-step-${i}`);
+          if (el) el.style.display = i === step ? 'block' : 'none';
+        }
+
+        const fill = document.getElementById('ob-progress-fill');
+        const txt = document.getElementById('step-progress-text');
+
+        if (fill && txt) {
+          if (step <= 4) {
+            fill.style.width = (step * 25) + '%';
+            txt.innerHTML = `<span class="status-dot active"></span> Step 0${step} of 04`;
+          } else {
+            fill.style.width = '100%';
+            txt.innerHTML = `<span class="status-dot active"></span> AI Neural Analysis`;
+          }
+        }
+
+        // Update stepper pills
+        document.querySelectorAll('.onboarding-step-pill').forEach(pill => {
+          const s = parseInt(pill.dataset.step);
+          pill.classList.remove('active', 'completed');
+          if (s === step) {
+            pill.classList.add('active');
+          } else if (s < step) {
+            pill.classList.add('completed');
+          }
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Interest card click toggle
+      document.querySelectorAll('#ob-interests-grid .interest-card').forEach(card => {
+        card.addEventListener('click', () => {
+          card.classList.toggle('selected');
+          updateBadges();
+        });
+      });
+
+      // Skill chip click toggle
+      document.querySelectorAll('#ob-skills-wrap .skill-tag-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          chip.classList.toggle('selected');
+          updateBadges();
+        });
+      });
+
+      // Skill category filter
+      document.querySelectorAll('.cat-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.cat-tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          document.querySelectorAll('#ob-skills-wrap .skill-tag-chip').forEach(chip => {
+            if (filter === 'all' || chip.dataset.cat === filter) {
+              chip.style.display = 'inline-flex';
+            } else {
+              chip.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // Technical Level / Proficiency selection
+      document.querySelectorAll('.skill-prof-btn[data-prof]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.skill-prof-btn[data-prof]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          profileData.proficiency = btn.dataset.prof;
+        });
+      });
+
+      // Goal cards selection
+      document.querySelectorAll('.goal-card').forEach(card => {
+        card.addEventListener('click', () => {
+          document.querySelectorAll('.goal-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          profileData.goal = card.dataset.goal;
+        });
+      });
+
+      // Time chips selection
+      document.querySelectorAll('#time-chips-group .time-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('#time-chips-group .time-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          profileData.weeklyHours = chip.dataset.time;
+        });
+      });
+
+      // Quick Fill Demo Button
+      document.getElementById('btn-quick-fill-ob')?.addEventListener('click', () => {
+        document.getElementById('ob-degree').value = 'B.Tech / B.E. Computer Science';
+        document.getElementById('ob-specialization').value = 'Cybersecurity & AI Systems';
+        document.getElementById('ob-college').value = 'Stanford University';
+        document.getElementById('ob-grad-year').value = '2026';
+        document.getElementById('ob-academic-level').value = 'Junior / 3rd Year';
+        App.showToast('Demo academic profile loaded!', 'success');
+      });
+
+      // Step 1 Next
+      document.getElementById('btn-step-1-next')?.addEventListener('click', () => {
+        const degree = document.getElementById('ob-degree').value;
+        const college = document.getElementById('ob-college').value.trim();
+        if (!degree) { App.showToast('Please select your degree program.', 'warning'); return; }
+        if (!college) { App.showToast('Please enter your university or college name.', 'warning'); return; }
+
+        profileData.degree = degree;
+        profileData.specialization = document.getElementById('ob-specialization').value.trim();
+        profileData.college = college;
+        profileData.graduationYear = document.getElementById('ob-grad-year').value;
+        profileData.academicLevel = document.getElementById('ob-academic-level').value;
+
+        goToStep(2);
+      });
+
+      // Step 2 Nav
+      document.getElementById('btn-step-2-back')?.addEventListener('click', () => goToStep(1));
+      document.getElementById('btn-step-2-next')?.addEventListener('click', () => {
+        const selected = Array.from(document.querySelectorAll('#ob-interests-grid .interest-card.selected'))
+          .map(c => c.dataset.interest);
+        if (selected.length < 2) {
+          App.showToast('Please select at least 2 interest domains.', 'warning');
+          return;
+        }
+        profileData.interests = selected;
+        goToStep(3);
+      });
+
+      // Step 3 Nav
+      document.getElementById('btn-step-3-back')?.addEventListener('click', () => goToStep(2));
+      document.getElementById('btn-step-3-next')?.addEventListener('click', () => {
+        const selectedSkills = Array.from(document.querySelectorAll('#ob-skills-wrap .skill-tag-chip.selected'))
+          .map(c => c.dataset.skill);
+
+        if (selectedSkills.length === 0) {
+          App.showToast('Please select at least 1 skill you have worked with.', 'warning');
+          return;
+        }
+
+        const skillScore = profileData.proficiency === 'Advanced' ? 80 : (profileData.proficiency === 'Intermediate' ? 65 : 45);
+        const skillsObj = { 'Problem Solving': 75, 'Critical Thinking': 70 };
+        selectedSkills.forEach(s => { skillsObj[s] = skillScore; });
+        profileData.skills = skillsObj;
+
+        goToStep(4);
+      });
+
+      // Step 4 Nav & Finish
+      document.getElementById('btn-step-4-back')?.addEventListener('click', () => goToStep(3));
+      document.getElementById('btn-finish-onboarding')?.addEventListener('click', async () => {
+        goToStep(5);
+        startAISequence();
+      });
+
+      // AI Sequence Processing Simulation
+      async function startAISequence() {
+        const checks = ['ai-chk-1', 'ai-chk-2', 'ai-chk-3', 'ai-chk-4', 'ai-chk-5'];
+        for (let i = 0; i < checks.length; i++) {
+          await new Promise(r => setTimeout(r, 650));
+          const el = document.getElementById(checks[i]);
+          if (el) el.classList.add('done');
+        }
+
+        // Save profile through AuthService
+        await AuthService.completeOnboarding(profileData);
+        
+        document.getElementById('ai-process-heading').textContent = 'Career Intelligence Synthesized!';
+        document.getElementById('ai-process-sub').textContent = 'Your personalized DNA matrix, career ranking, and roadmap are ready.';
+        document.getElementById('ai-done-actions').style.display = 'block';
+      }
+
+      document.getElementById('btn-enter-dashboard')?.addEventListener('click', () => {
+        window.location.href = 'dashboard.html';
+      });
+
+      // Initialize badge counts on load
+      updateBadges();
+    });
+  </script>
+
+</body>
+
+</html>

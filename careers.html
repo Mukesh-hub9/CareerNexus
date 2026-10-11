@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Recommendations — CareerNexus </title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+  <nav class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon" style="background:none;padding:0;overflow:visible;width:36px;height:36px;flex-shrink:0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" fill="none">
+          <defs>
+            <linearGradient id="lg-cn" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="url(#lg-cn)" opacity="0.18" />
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="none" stroke="url(#lg-cn)" stroke-width="1.6" />
+          <circle cx="22" cy="2" r="2.2" fill="#6366f1" />
+          <circle cx="38" cy="11" r="2.2" fill="#3b82f6" />
+          <circle cx="38" cy="33" r="2.2" fill="#06b6d4" />
+          <circle cx="22" cy="42" r="2.2" fill="#22d3ee" />
+          <circle cx="6" cy="33" r="2.2" fill="#818cf8" />
+          <circle cx="6" cy="11" r="2.2" fill="#6366f1" />
+          <line x1="22" y1="2" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="11" x2="22" y2="22" stroke="#3b82f6" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="11" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="33" x2="22" y2="22" stroke="#06b6d4" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="33" x2="22" y2="22" stroke="#818cf8" stroke-width="0.9" opacity="0.5" />
+          <line x1="22" y1="42" x2="22" y2="22" stroke="#22d3ee" stroke-width="0.9" opacity="0.5" />
+          <path d="M22 30 L22 15 M16 21 L22 15 L28 21" stroke="url(#lg-cn)" stroke-width="2.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <circle cx="22" cy="22" r="3" fill="url(#lg-cn)" />
+        </svg>
+      </div>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:1rem">CareerNexus</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-nav-item">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="career-dna.html" class="sidebar-nav-item">
+        <span class="nav-icon">🧬</span> Career DNA
+        <span class="nav-badge">New</span>
+      </a>
+      <a href="careers.html" class="sidebar-nav-item active">
+        <span class="nav-icon">🎯</span> Career Explorer
+      </a>
+      <a href="assessment.html" class="sidebar-nav-item">
+        <span class="nav-icon">🧠</span> Skill Assessment
+      </a>
+      <a href="roadmap.html" class="sidebar-nav-item">
+        <span class="nav-icon">🗺️</span> Roadmap
+      </a>
+      <div class="sidebar-section-label">Tools</div>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Portfolio coming soon!','info');return false">
+        <span class="nav-icon">💼</span> Portfolio
+      </a>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Resume Analyzer coming soon!','info');return false">
+        <span class="nav-icon">📄</span> Resume Analyzer
+      </a>
+      <a href="#" class="sidebar-nav-item"
+        onclick="document.getElementById('chatbot-fab') ? document.getElementById('chatbot-fab').click() : App.showToast('AI Assistant ready!','info');return false">
+        <span class="nav-icon">🤖</span> AI Assistant
+      </a>
+      <a href="trends.html" class="sidebar-nav-item">
+        <span class="nav-icon">📈</span> Industry Trends
+      </a>
+      <div class="sidebar-section-label">Account</div>
+      <a href="#" class="sidebar-nav-item" onclick="App.logout();return false;">
+        <span class="nav-icon">🚪</span> Sign Out
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="user-avatar user-avatar-initials">S</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:600" class="user-name-display">Student</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="top-bar">
+    <div>
+      <div style="font-size:0.85rem;font-weight:600">Career Recommendations</div>
+      <div style="font-size:0.7rem;color:var(--text-muted)" class="date-display"></div>
+    </div>
+    <div class="user-avatar user-avatar-initials" style="width:36px;height:36px;font-size:0.9rem">S</div>
+  </div>
+
+  <main class="main-content">
+
+    <div style="margin-bottom:var(--space-2xl)">
+      <div class="badge badge-blue" style="margin-bottom:12px">🎯 AI Recommendation Engine</div>
+      <h1 style="font-size:1.8rem;font-weight:800;margin-bottom:8px">Your Top Career Matches</h1>
+      <p style="color:var(--text-secondary)">Based on your skills, interests, academic performance, and industry demand.
+      </p>
+    </div>
+
+    <!-- ─── Matching Score Formula ─── -->
+    <div class="card reveal"
+      style="margin-bottom:var(--space-xl);background:linear-gradient(135deg,rgba(59,130,246,0.06),rgba(139,92,246,0.06))">
+      <h3 style="font-size:0.9rem;font-weight:600;color:var(--text-muted);margin-bottom:var(--space-md)">🤖 AI Matching
+        Algorithm</h3>
+      <div style="display:flex;gap:var(--space-md);flex-wrap:wrap;align-items:center">
+        <div class="badge badge-blue">Interests 30%</div>
+        <span style="color:var(--text-muted)">+</span>
+        <div class="badge badge-violet">Skills 35%</div>
+        <span style="color:var(--text-muted)">+</span>
+        <div class="badge badge-green">Academic 15%</div>
+        <span style="color:var(--text-muted)">+</span>
+        <div class="badge badge-orange">Assessment 10%</div>
+        <span style="color:var(--text-muted)">+</span>
+        <div class="badge badge-blue">Market Demand 10%</div>
+        <span style="color:var(--text-muted)">=</span>
+        <div class="badge badge-green">Career Match Score</div>
+      </div>
+    </div>
+
+    <!-- Chart -->
+    <div class="card reveal" style="margin-bottom:var(--space-xl)">
+      <h2 style="font-size:1rem;font-weight:700;margin-bottom:var(--space-md)">📊 Career Match Comparison</h2>
+      <div style="height:280px">
+        <canvas id="career-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- ─── Main Layout ─── -->
+    <div class="careers-layout">
+
+      <!-- Left: Career cards list -->
+      <div id="career-cards-list">
+        <!-- Filled by JS -->
+      </div>
+
+      <!-- Right: Detail panel -->
+      <div class="career-detail-panel" id="career-detail">
+        <div style="text-align:center;padding:var(--space-2xl) 0;color:var(--text-muted)">
+          <div style="font-size:3rem;margin-bottom:12px">🎯</div>
+          <p style="font-size:0.9rem">Click a career card to see detailed analysis</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ─── Internship Recommendations ─── -->
+    <div style="margin-top:var(--space-2xl)">
+      <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:var(--space-xl)">💼 Recommended Internships</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-lg)"
+        id="internship-list">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+    <!-- ─── Certification Recommendations ─── -->
+    <div style="margin-top:var(--space-2xl)">
+      <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:var(--space-xl)">📜 Recommended Certifications</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-lg)"
+        id="cert-list">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Chatbot -->
+  <button class="chatbot-fab" id="chatbot-fab">🤖</button>
+  <div class="chatbot-window hidden" id="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">🧠</div>
+      <div>
+        <div style="font-weight:700;font-size:0.9rem">Career Guide AI</div>
+        <div style="font-size:0.75rem;color:var(--accent-green)">● Online</div>
+      </div>
+      <button class="btn-ghost btn-icon" style="margin-left:auto" id="chatbot-close">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages">
+      <div class="chat-msg bot">👋 Ask me about any career path, required skills, or certifications!</div>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" placeholder="Ask about careers..." id="chatbot-input" />
+      <button class="chatbot-send" id="chatbot-send">➤</button>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+  <script src="js/app.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script src="js/charts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!App.requireAuth()) return;
+      const state = App.getState();
+      const profile = state.profile || {};
+
+      const recs = AIEngine.getRecommendations(profile);
+      let selectedCareer = recs[0];
+
+      // Chart
+      Charts.createCareerMatchChart('career-chart', recs);
+
+      // Career cards
+      const ranks = ['🥇', '🥈', '🥉', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣'];
+      const cardsEl = document.getElementById('career-cards-list');
+      cardsEl.innerHTML = recs.slice(0, 6).map((r, i) => `
+    <div class="career-card hover-lift reveal" id="card-${i}" onclick="showCareerDetail(${i})"
+         style="margin-bottom:var(--space-md);cursor:pointer;${i === 0 ? 'border-color:var(--accent-blue);background:rgba(59,130,246,0.06)' : ''}">
+      <span class="rank">${ranks[i]}</span>
+      <div class="career-info">
+        <div class="career-name">${r.career.emoji} ${r.career.name}</div>
+        <div class="career-industry">${r.career.industry} · ${r.career.salary}</div>
+        <div style="margin-top:8px">
+          <div class="progress-bar progress-thin">
+            <div class="progress-fill" data-width="${r.totalScore}" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="match-score" style="color:${r.totalScore >= 80 ? 'var(--accent-green)' : r.totalScore >= 60 ? 'var(--accent-blue-light)' : 'var(--accent-orange)'}">
+        ${r.totalScore}%
+      </div>
+    </div>
+  `).join('');
+
+      setTimeout(() => { App.animateProgressBars(); showCareerDetail(0); }, 200);
+
+      // Internships
+      const internships = [
+        { title: 'Cybersecurity Intern', company: 'TechSecure Corp', match: 89, skills: ['Networking', 'Linux', 'Python'] },
+        { title: 'AI Research Intern', company: 'DeepMind Labs', match: 82, skills: ['Python', 'Machine Learning', 'Statistics'] },
+        { title: 'Cloud Ops Intern', company: 'CloudNova Inc', match: 78, skills: ['AWS', 'Linux', 'Docker'] }
+      ];
+      document.getElementById('internship-list').innerHTML = internships.map(i => `
+    <div class="card hover-lift reveal">
+      <div style="display:flex;align-items:start;justify-content:space-between;margin-bottom:12px">
+        <div>
+          <div style="font-weight:700;font-size:1rem;margin-bottom:4px">💼 ${i.title}</div>
+          <div style="font-size:0.8rem;color:var(--text-muted)">${i.company}</div>
+        </div>
+        <span class="badge badge-green">${i.match}% Match</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px">
+        ${i.skills.map(s => `<span class="badge badge-blue">${s}</span>`).join('')}
+      </div>
+      <button class="btn btn-secondary btn-full btn-sm" onclick="App.showToast('Application feature coming soon!','info')">Apply Now</button>
+    </div>
+  `).join('');
+
+      // Certifications
+      document.getElementById('cert-list').innerHTML = (selectedCareer?.career?.certifications || []).map((c, i) => `
+    <div class="card hover-lift reveal">
+      <div style="font-size:2rem;margin-bottom:10px">${['🌟', '🏆', '💎'][i] || '🎖️'}</div>
+      <div style="font-weight:700;margin-bottom:4px">${c.name}</div>
+      <div class="badge ${i === 0 ? 'badge-green' : i === 1 ? 'badge-orange' : 'badge-violet'}" style="margin-bottom:10px">${c.level}</div>
+      <p style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;margin-bottom:12px">${c.why}</p>
+      <button class="btn btn-secondary btn-full btn-sm" onclick="App.showToast('Redirecting to certification page...','info')">Learn More →</button>
+    </div>
+  `).join('');
+
+      window.showCareerDetail = function (idx) {
+        // Remove active styling from all cards
+        document.querySelectorAll('.career-card').forEach(c => {
+          c.style.borderColor = ''; c.style.background = '';
+        });
+        const card = document.getElementById(`card-${idx}`);
+        if (card) { card.style.borderColor = 'var(--accent-blue)'; card.style.background = 'rgba(59,130,246,0.06)'; }
+
+        const r = recs[idx];
+        const gap = AIEngine.analyzeSkillGap(r);
+
+        document.getElementById('career-detail').innerHTML = `
+      <div style="margin-bottom:var(--space-xl)">
+        <div style="font-size:2.5rem;margin-bottom:8px">${r.career.emoji}</div>
+        <h2 style="font-size:1.3rem;font-weight:800;margin-bottom:4px">${r.career.name}</h2>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:12px">${r.career.industry}</p>
+
+        <!-- Match Ring -->
+        <div style="background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.08));border-radius:var(--radius-xl);padding:var(--space-xl);text-align:center;margin-bottom:var(--space-lg)">
+          <div style="font-size:3.5rem;font-weight:900;font-family:var(--font-display);background:var(--grad-text);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">
+            ${r.totalScore}%
+          </div>
+          <div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em">Career Match</div>
+          <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;text-align:left">
+            <div style="font-size:0.78rem"><span style="color:var(--text-muted)">Interest:</span> <strong style="color:var(--accent-blue-light)">${r.breakdown.interestScore}%</strong></div>
+            <div style="font-size:0.78rem"><span style="color:var(--text-muted)">Skills:</span> <strong style="color:var(--accent-blue-light)">${r.breakdown.skillScore}%</strong></div>
+            <div style="font-size:0.78rem"><span style="color:var(--text-muted)">Academic:</span> <strong style="color:var(--accent-blue-light)">${r.breakdown.acadScore}%</strong></div>
+            <div style="font-size:0.78rem"><span style="color:var(--text-muted)">Demand:</span> <strong style="color:var(--accent-blue-light)">${r.breakdown.demandScore}%</strong></div>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:8px;margin-bottom:var(--space-md);flex-wrap:wrap">
+          <span class="badge badge-green">💰 ${r.career.salary}</span>
+          <span class="badge badge-blue">📈 ${r.career.growth} growth</span>
+          <span class="badge badge-violet">🔥 ${r.career.demand}% demand</span>
+        </div>
+
+        <p style="font-size:0.85rem;color:var(--text-secondary);line-height:1.6;margin-bottom:var(--space-lg)">${r.career.description}</p>
+      </div>
+
+      <!-- Skill Gap -->
+      <div>
+        <h3 style="font-size:0.9rem;font-weight:700;margin-bottom:var(--space-md)">🔍 Skill Gap Analysis</h3>
+        ${gap.have.map(s => `
+          <div class="skill-gap-row">
+            <span class="skill-gap-icon have">✅</span>
+            <span class="skill-gap-name">${s}</span>
+            <span class="skill-gap-status have">Have</span>
+          </div>`).join('')}
+        ${gap.missing.slice(0, 5).map(s => `
+          <div class="skill-gap-row">
+            <span class="skill-gap-icon missing">❌</span>
+            <span class="skill-gap-name">${s}</span>
+            <span class="skill-gap-status missing">Missing</span>
+          </div>`).join('')}
+      </div>
+
+      <a href="roadmap.html?career=${r.career.id}" onclick="localStorage.setItem('careernexus_target_career', '${r.career.id}')" class="btn btn-primary btn-full" style="margin-top:var(--space-lg)">🗺️ Generate Roadmap for ${r.career.name} →</a>
+    `;
+      };
+    });
+  </script>
+
+</body>
+
+</html>

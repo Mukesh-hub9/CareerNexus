@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — CareerNexus </title>
+  <meta name="description"
+    content="Your personalized career intelligence dashboard with skill scores, career matches, and learning progress.">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon" style="background:none;padding:0;overflow:visible;width:36px;height:36px;flex-shrink:0">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 44" width="36" height="36" fill="none">
+          <defs>
+            <linearGradient id="lg-cn" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#6366f1" />
+              <stop offset="100%" stop-color="#06b6d4" />
+            </linearGradient>
+          </defs>
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="url(#lg-cn)" opacity="0.18" />
+          <polygon points="22,2 38,11 38,33 22,42 6,33 6,11" fill="none" stroke="url(#lg-cn)" stroke-width="1.6" />
+          <circle cx="22" cy="2" r="2.2" fill="#6366f1" />
+          <circle cx="38" cy="11" r="2.2" fill="#3b82f6" />
+          <circle cx="38" cy="33" r="2.2" fill="#06b6d4" />
+          <circle cx="22" cy="42" r="2.2" fill="#22d3ee" />
+          <circle cx="6" cy="33" r="2.2" fill="#818cf8" />
+          <circle cx="6" cy="11" r="2.2" fill="#6366f1" />
+          <line x1="22" y1="2" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="11" x2="22" y2="22" stroke="#3b82f6" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="11" x2="22" y2="22" stroke="#6366f1" stroke-width="0.9" opacity="0.5" />
+          <line x1="38" y1="33" x2="22" y2="22" stroke="#06b6d4" stroke-width="0.9" opacity="0.5" />
+          <line x1="6" y1="33" x2="22" y2="22" stroke="#818cf8" stroke-width="0.9" opacity="0.5" />
+          <line x1="22" y1="42" x2="22" y2="22" stroke="#22d3ee" stroke-width="0.9" opacity="0.5" />
+          <path d="M22 30 L22 15 M16 21 L22 15 L28 21" stroke="url(#lg-cn)" stroke-width="2.8" stroke-linecap="round"
+            stroke-linejoin="round" />
+          <circle cx="22" cy="22" r="3" fill="url(#lg-cn)" />
+        </svg></div>
+      <div>
+        <div style="font-family:var(--font-display);font-weight:800;font-size:1rem">CareerNexus</div>
+        <div style="font-size:0.7rem;color:var(--text-muted)">AI Platform</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section-label">Main</div>
+      <a href="dashboard.html" class="sidebar-nav-item active">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a href="career-dna.html" class="sidebar-nav-item">
+        <span class="nav-icon">🧬</span> Career DNA
+        <span class="nav-badge">New</span>
+      </a>
+      <a href="careers.html" class="sidebar-nav-item">
+        <span class="nav-icon">🎯</span> Career Explorer
+      </a>
+      <a href="assessment.html" class="sidebar-nav-item">
+        <span class="nav-icon">🧠</span> Skill Assessment
+      </a>
+      <a href="roadmap.html" class="sidebar-nav-item">
+        <span class="nav-icon">🗺️</span> Roadmap
+      </a>
+      <div class="sidebar-section-label">Tools</div>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Portfolio coming soon!','info');return false">
+        <span class="nav-icon">💼</span> Portfolio
+      </a>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Resume Analyzer coming soon!','info');return false">
+        <span class="nav-icon">📄</span> Resume Analyzer
+      </a>
+      <a href="#" class="sidebar-nav-item" onclick="document.getElementById('chatbot-fab').click();return false">
+        <span class="nav-icon">🤖</span> AI Assistant
+      </a>
+      <a href="trends.html" class="sidebar-nav-item">
+        <span class="nav-icon">📈</span> Industry Trends
+      </a>
+      <div class="sidebar-section-label">Account</div>
+      <a href="#" class="sidebar-nav-item" onclick="App.showToast('Profile settings coming soon!','info');return false">
+        <span class="nav-icon">👤</span> My Profile
+      </a>
+      <a href="#" class="sidebar-nav-item" onclick="App.logout();return false;">
+        <span class="nav-icon">🚪</span> Sign Out
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div style="display:flex;align-items:center;gap:var(--space-sm)">
+        <div class="user-avatar" id="sidebar-avatar">M</div>
+        <div>
+          <div style="font-size:0.85rem;font-weight:600" id="sidebar-name">Loading...</div>
+          <div style="font-size:0.7rem;color:var(--text-muted)">Student</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile overlay -->
+  <div id="sidebar-overlay" style="position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:99;display:none"></div>
+
+  <!-- ═══ TOP BAR ═══ -->
+  <div class="top-bar">
+    <div style="display:flex;align-items:center;gap:var(--space-md)">
+      <button id="sidebar-toggle" class="btn-icon btn-ghost" style="display:none">☰</button>
+      <div>
+        <div style="font-size:0.85rem;font-weight:600" id="topbar-title">Dashboard</div>
+        <div style="font-size:0.7rem;color:var(--text-muted)" id="topbar-date"></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:var(--space-md)">
+      <button class="btn-icon btn-ghost" onclick="App.showToast('Notifications coming soon!','info')"
+        title="Notifications">🔔</button>
+      <div class="user-avatar user-avatar-initials" id="topbar-avatar" style="width:36px;height:36px;font-size:0.9rem">M
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ MAIN CONTENT ═══ -->
+  <main class="main-content" id="main-content">
+
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <div>
+        <h1 class="dashboard-greeting">Welcome Back, <span id="greeting-name">Student</span> 👋</h1>
+        <p class="dashboard-date date-display"></p>
+      </div>
+      <a href="career-dna.html" class="btn btn-primary btn-sm">🧬 View Career DNA</a>
+    </div>
+
+    <!-- ─── Career Readiness Panel ─── -->
+    <div class="readiness-panel reveal">
+      <div style="flex-shrink:0;position:relative">
+        <canvas id="readiness-chart" width="120" height="120" style="width:120px;height:120px"></canvas>
+        <div id="readiness-overlay"
+          style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+          <span id="readiness-value"
+            style="font-family:var(--font-display);font-size:1.6rem;font-weight:900;line-height:1">0%</span>
+          <span
+            style="font-size:0.6rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em">Ready</span>
+        </div>
+      </div>
+      <div style="flex:1">
+        <div class="badge badge-green" style="margin-bottom:12px">🎯 Career Readiness Score</div>
+        <h2 style="font-size:1.4rem;font-weight:800;margin-bottom:8px">Your Career Profile</h2>
+        <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:var(--space-lg)">
+          Based on your skills, academic performance, and assessment results.
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-md)" id="readiness-breakdown">
+          <!-- Filled by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── Quick Actions ─── -->
+    <div class="quick-actions-grid" style="grid-template-columns:repeat(5,1fr)">
+      <a href="career-dna.html" class="quick-action-card hover-lift"
+        style="border-color:rgba(59,130,246,0.3);background:rgba(59,130,246,0.06)">
+        <div class="quick-action-icon" style="background:rgba(59,130,246,0.2)">🧬</div>
+        <div style="font-weight:700;font-size:0.9rem;color:var(--accent-blue-light)">Career DNA</div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">Strength identity</div>
+      </a>
+      <a href="assessment.html" class="quick-action-card hover-lift">
+        <div class="quick-action-icon" style="background:rgba(139,92,246,0.15)">🧠</div>
+        <div style="font-weight:600;font-size:0.9rem">Skill Assessment</div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">Test your skills</div>
+      </a>
+      <a href="careers.html" class="quick-action-card hover-lift">
+        <div class="quick-action-icon" style="background:rgba(6,182,212,0.15)">🎯</div>
+        <div style="font-weight:600;font-size:0.9rem">Career Matches</div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">View top matches</div>
+      </a>
+      <a href="roadmap.html" class="quick-action-card hover-lift">
+        <div class="quick-action-icon" style="background:rgba(16,185,129,0.15)">🗺️</div>
+        <div style="font-weight:600;font-size:0.9rem">My Roadmap</div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">Continue learning</div>
+      </a>
+      <a href="trends.html" class="quick-action-card hover-lift">
+        <div class="quick-action-icon" style="background:rgba(245,158,11,0.15)">📈</div>
+        <div style="font-weight:600;font-size:0.9rem">Trends</div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">Market insights</div>
+      </a>
+    </div>
+
+    <!-- ─── Main Dashboard Grid ─── -->
+    <div class="dashboard-grid">
+
+      <!-- Left: Skills -->
+      <div>
+        <div class="card reveal" style="margin-bottom:var(--space-xl)">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-lg)">
+            <h2 style="font-size:1.1rem;font-weight:700">📊 Skill Overview</h2>
+            <a href="assessment.html" class="btn btn-ghost btn-sm">View All →</a>
+          </div>
+          <div id="skills-list">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <!-- Career Matches -->
+        <div class="card reveal delay-1">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-lg)">
+            <h2 style="font-size:1.1rem;font-weight:700">🎯 Top Career Matches</h2>
+            <a href="careers.html" class="btn btn-ghost btn-sm">View All →</a>
+          </div>
+          <div id="career-matches-list">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Radar + Roadmap snapshot -->
+      <div>
+        <div class="card reveal" style="margin-bottom:var(--space-xl)">
+          <h2 style="font-size:1rem;font-weight:700;margin-bottom:var(--space-md)">🕸️ Skill Radar</h2>
+          <div style="height:240px">
+            <canvas id="skill-radar"></canvas>
+          </div>
+        </div>
+
+        <div class="card reveal delay-1">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--space-md)">
+            <h2 style="font-size:1rem;font-weight:700">🗺️ Roadmap Progress</h2>
+            <a href="roadmap.html" class="btn btn-ghost btn-sm">View →</a>
+          </div>
+          <div id="roadmap-snapshot">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ═══ AI CHATBOT ═══ -->
+  <button class="chatbot-fab" id="chatbot-fab" title="AI Career Assistant">🤖</button>
+  <div class="chatbot-window hidden" id="chatbot-window">
+    <div class="chatbot-header">
+      <div class="chatbot-avatar">🧠</div>
+      <div>
+        <div style="font-weight:700;font-size:0.9rem">CareerNexus</div>
+        <div style="font-size:0.75rem;color:var(--accent-green)">● Online</div>
+      </div>
+      <button class="btn-ghost btn-icon" style="margin-left:auto" id="chatbot-close">✕</button>
+    </div>
+    <div class="chatbot-messages" id="chatbot-messages">
+      <div class="chat-msg bot">
+        👋 Hi! I'm your AI career guide. Ask me about skills to learn, career paths, or your roadmap!
+      </div>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" placeholder="Ask about your career..." id="chatbot-input" />
+      <button class="chatbot-send" id="chatbot-send">➤</button>
+    </div>
+  </div>
+
+  <div class="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/ai-engine.js"></script>
+  <script src="js/charts.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!App.requireAuth()) return;
+      const state = App.getState();
+      const profile = state.profile || {};
+      const user = state.user || {};
+
+      // Set names
+      document.getElementById('greeting-name').textContent = user.name?.split(' ')[0] || 'Student';
+      document.getElementById('sidebar-name').textContent = user.name || 'Student';
+      document.getElementById('sidebar-avatar').textContent = user.avatar || 'S';
+      document.getElementById('topbar-avatar').textContent = user.avatar || 'S';
+      document.getElementById('topbar-date').textContent = App.getFormattedDate();
+
+      // Readiness score
+      const readiness = AIEngine.calculateReadinessScore(profile);
+      const score = readiness.total;
+      document.getElementById('readiness-value').textContent = score + '%';
+
+      // Readiness chart
+      Charts.createReadinessDoughnut('readiness-chart', score);
+
+      // Readiness breakdown
+      const bd = readiness.breakdown;
+      const breakdown = [
+        { label: 'Skills', value: bd.skills, icon: '🧠' },
+        { label: 'Academic', value: bd.academic, icon: '🎓' },
+        { label: 'Assessment', value: bd.assessment, icon: '📝' },
+        { label: 'Certs', value: bd.certifications, icon: '📜' },
+        { label: 'Projects', value: bd.projects, icon: '💼' }
+      ];
+      document.getElementById('readiness-breakdown').innerHTML = breakdown.map(b => `
+    <div style="text-align:center">
+      <div style="font-size:1.1rem;margin-bottom:4px">${b.icon}</div>
+      <div style="font-size:1rem;font-weight:700;color:${AIEngine.getSkillColor(b.value)}">${b.value}%</div>
+      <div style="font-size:0.7rem;color:var(--text-muted)">${b.label}</div>
+    </div>
+  `).join('');
+
+      // Skills list
+      const skills = profile.skills || { Python: 60, Networking: 75, Communication: 70 };
+      const skillsEl = document.getElementById('skills-list');
+      const topSkills = Object.entries(skills).slice(0, 6);
+      skillsEl.innerHTML = topSkills.map(([name, pct]) => `
+    <div class="skill-row">
+      <div class="skill-row-header">
+        <span class="skill-name">${name}</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="badge" style="font-size:0.7rem;padding:2px 8px;background:rgba(59,130,246,0.1);color:var(--text-muted)">${AIEngine.getSkillLevel(pct)}</span>
+          <span class="skill-percent" style="color:${AIEngine.getSkillColor(pct)}">${pct}%</span>
+        </div>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" data-width="${pct}" style="background:${AIEngine.getSkillColor(pct)}"></div>
+      </div>
+    </div>
+  `).join('');
+
+      // Skill radar chart
+      Charts.createSkillRadar('skill-radar', skills);
+
+      // Career recommendations
+      const recs = AIEngine.getRecommendations(profile);
+      const top3 = recs.slice(0, 3);
+      const ranks = ['🥇', '🥈', '🥉'];
+      document.getElementById('career-matches-list').innerHTML = top3.map((r, i) => `
+    <div class="career-card hover-lift" onclick="window.location.href='careers.html'" style="margin-bottom:12px">
+      <span class="rank">${ranks[i]}</span>
+      <div class="career-info">
+        <div class="career-name">${r.career.emoji} ${r.career.name}</div>
+        <div class="career-industry">${r.career.industry}</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          ${r.career.coreSkills.slice(0, 3).map(s => `<span class="badge badge-blue" style="font-size:0.7rem">${s}</span>`).join('')}
+        </div>
+      </div>
+      <div class="match-score">${r.totalScore}%</div>
+    </div>
+  `).join('');
+
+      // Roadmap snapshot
+      const topCareer = recs[0]?.career;
+      if (topCareer) {
+        const rm = AIEngine.generateRoadmap(topCareer, skills);
+        const current = topCareer.roadmap[0];
+        document.getElementById('roadmap-snapshot').innerHTML = `
+      <div style="margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:0.85rem;font-weight:600">${topCareer.name}</span>
+          <span style="font-size:0.85rem;font-weight:700;color:var(--accent-blue-light)">${rm.progress}%</span>
+        </div>
+        <div class="progress-bar" style="margin-bottom:8px">
+          <div class="progress-fill" data-width="${rm.progress}"></div>
+        </div>
+        <div style="font-size:0.75rem;color:var(--text-muted)">Phase 1: ${current.phase} · ${current.duration}</div>
+      </div>
+      <div style="background:rgba(59,130,246,0.06);border:1px solid var(--border-subtle);border-radius:10px;padding:12px">
+        <div style="font-size:0.75rem;color:var(--text-muted);margin-bottom:6px">🔥 Next Task</div>
+        <div style="font-size:0.9rem;font-weight:600">${current.tasks[0] || 'Networking Basics'}</div>
+      </div>
+      <a href="roadmap.html" class="btn btn-secondary btn-full btn-sm" style="margin-top:12px">View Full Roadmap →</a>
+    `;
+      }
+
+      setTimeout(() => App.animateProgressBars(), 300);
+
+      // Animate readiness counter
+      let count = 0;
+      const timer = setInterval(() => {
+        count = Math.min(count + 2, score);
+        document.getElementById('readiness-value').textContent = count + '%';
+        if (count >= score) clearInterval(timer);
+      }, 20);
+
+    });
+
+    function handleLogout() {
+      App.saveState({ user: null, onboarded: false });
+      window.location.href = 'index.html';
+    }
+  </script>
+
+</body>
+
+</html>
